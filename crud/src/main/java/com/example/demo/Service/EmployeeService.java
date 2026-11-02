@@ -19,4 +19,6 @@ public interface EmployeeService {
 	Employee updateEmployee(EmployeeDto dto);
 	
 	String deleteEmp(Integer id);
+	
+	Employee getByName(String name);
 }

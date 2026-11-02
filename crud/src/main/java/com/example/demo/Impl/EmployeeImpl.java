@@ -68,4 +68,14 @@ public class EmployeeImpl implements EmployeeService {
 		return "employee not found";
 	}
 
+	@Override
+	public Employee getByName(String name) {
+		Optional<Employee> getByName = employeeRepo.findByEmpName(name);
+		if(getByName.isPresent())
+		{
+			return getByName.get();
+		}
+		return null;
+	}
+
 }
