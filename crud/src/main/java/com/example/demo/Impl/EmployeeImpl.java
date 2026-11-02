@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Entity.Employee;
+import com.example.demo.Exception.UserNotFoundException;
 import com.example.demo.Repository.EmployeeRepo;
 import com.example.demo.Service.EmployeeService;
 import com.example.demo.dto.EmployeeDto;
@@ -35,13 +36,13 @@ public class EmployeeImpl implements EmployeeService {
 	}
 
 	@Override
-	public Employee getById(Integer id) {
+	public Employee getById(Integer id) throws UserNotFoundException {
 		Optional<Employee> employee = employeeRepo.findById(id);
-		if(employee.isPresent())
-		{
+		if (employee.isPresent()) {
 			return employee.get();
+		} else {
+			throw new UserNotFoundException("User not found with this id :" + id);
 		}
-		return null;
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Entity.Employee;
+import com.example.demo.Exception.UserNotFoundException;
 import com.example.demo.dto.EmployeeDto;
 
 @Service
@@ -14,7 +15,7 @@ public interface EmployeeService {
 	
 	List<Employee> getAllEmp();
 	
-	Employee getById(Integer id);
+	Employee getById(Integer id) throws UserNotFoundException;
 	
 	Employee updateEmployee(EmployeeDto dto);
 	
