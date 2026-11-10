@@ -5,6 +5,8 @@ public class EmployeeDto {
 	private Integer empId;
 	private String empName;
 	private String department;
+	private String email;
+	
 	public Integer getEmpId() {
 		return empId;
 	}
@@ -23,5 +25,12 @@ public class EmployeeDto {
 	public void setDepartment(String department) {
 		this.department = department;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 
 }

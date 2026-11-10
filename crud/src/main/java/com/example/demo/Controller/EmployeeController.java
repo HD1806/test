@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Entity.Employee;
+import com.example.demo.Exception.UserAlreadyExistException;
 import com.example.demo.Exception.UserNotFoundException;
 import com.example.demo.Service.EmployeeService;
 import com.example.demo.dto.EmployeeDto;
@@ -26,7 +27,7 @@ public class EmployeeController {
 	}
 	
 	@PostMapping("/Create")
-	public Employee createEmployee(@RequestBody EmployeeDto dto)
+	public Employee createEmployee(@RequestBody EmployeeDto dto) throws UserAlreadyExistException
 	{
 		return employeeService.createEmployee(dto);
 	}
@@ -44,7 +45,7 @@ public class EmployeeController {
 	}
 	
 	@PutMapping("/updateEmployee")
-	public Employee updateEmployee(@RequestBody EmployeeDto dto)
+	public Employee updateEmployee(@RequestBody EmployeeDto dto) throws UserNotFoundException
 	{
 		return employeeService.updateEmployee(dto);
 	}
@@ -56,7 +57,7 @@ public class EmployeeController {
 	}
 	
 	@GetMapping("/getByName/{name}")
-	public Employee getByName(@PathVariable String name)
+	public Employee getByName(@PathVariable String name) throws UserNotFoundException
 	{
 		return employeeService.getByName(name);
 	}

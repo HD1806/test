@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Employee {
@@ -13,13 +15,17 @@ public class Employee {
 	private Integer empId;
 	private String empName;
 	private String department;
+	@NotBlank
+	@Email(message = "Invalide email formate")
+	private String email;
 	
 	public Employee() {}
-	public Employee(Integer empId, String empName, String department) {
+	public Employee(Integer empId, String empName, String department, String email) {
 		super();
 		this.empId = empId;
 		this.empName = empName;
 		this.department = department;
+		this.email = email;
 	}
 	public Integer getEmpId() {
 		return empId;
@@ -38,6 +44,12 @@ public class Employee {
 	}
 	public void setDepartment(String department) {
 		this.department = department;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }
